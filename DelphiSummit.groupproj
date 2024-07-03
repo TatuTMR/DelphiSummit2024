@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{731A9833-439E-4F9D-B878-60A6CC97D4F5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DebuggingTips\DebuggingTips.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ExceptionStacks\ExceptionsChain.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="QueueNotQueuing\QueueNotQueuing.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DateTimeCount\DateTimeCount.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DebuggingTips">
+        <MSBuild Projects="DebuggingTips\DebuggingTips.dproj"/>
+    </Target>
+    <Target Name="DebuggingTips:Clean">
+        <MSBuild Projects="DebuggingTips\DebuggingTips.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DebuggingTips:Make">
+        <MSBuild Projects="DebuggingTips\DebuggingTips.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExceptionsChain">
+        <MSBuild Projects="ExceptionStacks\ExceptionsChain.dproj"/>
+    </Target>
+    <Target Name="ExceptionsChain:Clean">
+        <MSBuild Projects="ExceptionStacks\ExceptionsChain.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExceptionsChain:Make">
+        <MSBuild Projects="ExceptionStacks\ExceptionsChain.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="QueueNotQueuing">
+        <MSBuild Projects="QueueNotQueuing\QueueNotQueuing.dproj"/>
+    </Target>
+    <Target Name="QueueNotQueuing:Clean">
+        <MSBuild Projects="QueueNotQueuing\QueueNotQueuing.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="QueueNotQueuing:Make">
+        <MSBuild Projects="QueueNotQueuing\QueueNotQueuing.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DateTimeCount">
+        <MSBuild Projects="DateTimeCount\DateTimeCount.dproj"/>
+    </Target>
+    <Target Name="DateTimeCount:Clean">
+        <MSBuild Projects="DateTimeCount\DateTimeCount.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DateTimeCount:Make">
+        <MSBuild Projects="DateTimeCount\DateTimeCount.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DebuggingTips;ExceptionsChain;QueueNotQueuing;DateTimeCount"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DebuggingTips:Clean;ExceptionsChain:Clean;QueueNotQueuing:Clean;DateTimeCount:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DebuggingTips:Make;ExceptionsChain:Make;QueueNotQueuing:Make;DateTimeCount:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
